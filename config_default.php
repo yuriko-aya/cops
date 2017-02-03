@@ -36,7 +36,7 @@
     /*
      * Number of recent books to show
      */
-    $config['cops_recentbooks_limit'] = '50';
+    $config['cops_recentbooks_limit'] = '4';
 
     /*
      * Catalog's author name
@@ -130,14 +130,14 @@
      * Max number of items per page
      * -1 unlimited
      */
-    $config['cops_max_item_per_page'] = '-1';
+    $config['cops_max_item_per_page'] = '12';
 
     /*
      * split authors by first letter
      * 1 : Yes
      * 0 : No
      */
-    $config['cops_author_split_first_letter'] = '1';
+    $config['cops_author_split_first_letter'] = '0';
 
     /*
      * split titles by first letter
@@ -310,7 +310,7 @@
      * 'default'
      * 'bootstrap'
      */
-    $config['cops_template'] = 'default';
+    $config['cops_template'] = 'childoflily';
 
     /*
      * Which style is used by default :

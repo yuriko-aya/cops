@@ -1,0 +1,50 @@
+<div class="wrapper" style="height: auto;">
+  <header class="main-header">
+    <a href="{{=it.homeurl}}" class="logo">
+      <span class="logo-mini">AYA</span>
+      <!-- LOGO -->
+      <span class="logo-lg">AYA Digital Library</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+        <li>
+        <form id="searchForm" class="navbar-form" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="{{=it.c.i18n.searchAlt}}" name="query">
+          </div>
+        </form>
+        </li>
+      </div>
+    </nav>
+  </header>
+  <aside class="main-sidebar">
+    <!-- Inner sidebar -->
+    <section class="sidebar">
+      <img src="images/default.png" alt="Yuriko Aya" style="padding: 20px;">
+<!--
+      <div class="text-center" style="padding: 10px; color: white;">
+        <p>Welcome to Ahmad AYA Sanusi Digital Library</p> <p>Please send every inquiry to aya@sanusi.me</p>
+      </div>
+-->
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <li class="header">NAVIGATION MENU</li>
+        <li><a href="{{=it.homeurl}}"><i class="fa fa-home"></i> <span>HOME</span></a></li>
+{{~it.indexentries:indexentry:i}}
+          <li>
+            <a href="{{=indexentry.navlink}}">
+              <i class="fa fa-dot-circle-o"></i> <span>{{=htmlspecialchars (indexentry.title)}}</span>
+            </a>
+          </li>
+{{~}}
+      </ul><!-- /.sidebar-menu -->
+    </section><!-- /.sidebar -->
+  </aside><!-- /.main-sidebar -->
+<div class="content-wrapper" style="min-height: 916px !important;">
+  <div class="content">

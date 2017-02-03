@@ -214,6 +214,10 @@ class JSONRenderer
         $out ["page"] = $page;
         $out ["multipleDatabase"] = Base::isMultipleDatabaseEnabled () ? 1 : 0;
         $out ["entries"] = $entries;
+        $out ["indexentries"] = self::indexp ('index');
+        $out ["lastentries"] = self::indexp (10);
+        $out ["indexindexes"] = self::indexp(4);
+        $out ['somenav'] = self::some_nav();
         $out ["isPaginated"] = 0;
         if ($currentPage->isPaginated ()) {
             $prevLink = $currentPage->getPrevLink ();
@@ -251,4 +255,60 @@ class JSONRenderer
 
         return $out;
     }
+    public static function indexp ($page,$complete = false) {
+        global $config;
+        $query = getURLParam ("query");
+        $search = getURLParam ("search");
+        $qid = getURLParam ("id");
+        $n = getURLParam ("n", "1");
+        $database = GetUrlParam (DB);
+
+        //old code
+        $indexPage = Page::getPage ($page, $qid, $query, $n);
+        $indexPage->InitializeContent ();
+
+        $indexout = array ( "title" => $indexPage->title);
+        $indexentries = array ();
+        foreach ($indexPage->entryArray as $indexentry) {
+            array_push ($indexentries, self::getContentArray ($indexentry));
+        }
+        $indexout ["indexentries"] = $indexentries;
+        return $indexentries;
+    }
+
+    public static function some_nav () {
+      global $config;
+      $page = getURLParam("page");
+      $qid = getURLParam ("id");
+      $somenav = "";
+      if(!empty($qid) && !empty($page)) {
+        if($page == 3) {
+          $somenav = '<a href="index.php?page=1">Author</a> >>';
+        }
+        if($page == 7) {
+          $somenav = '<a href="index.php?page=6">Series</a> >>';
+        }
+        if($page == 21) {
+          $somenav = '<a href="index.php?page=20">Publisher</a> >>';
+        }
+        if($page == 12) {
+          $somenav = '<a href="index.php?page=11">Tags</a> >>';
+        }
+        if($page == 23) {
+          $somenav = '<a href="index.php?page=22">Rating</a> >>';
+        }
+        if($page == 18) {
+          $somenav = '<a href="index.php?page=17">Language</a> >>';
+        }
+        if($page == 5) {
+          $somenav = '<a href="index.php?page=4">Index</a> >>';
+        }
+        if($page == 13) {
+          $somenav = '<a href="index.php?page=5">Book info</a> >>';
+        }
+      }
+      return $somenav;
+    }
+
+
 }

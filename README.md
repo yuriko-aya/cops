@@ -114,7 +114,6 @@ External libraries used :
 
 # Copyright & License
 
-COPS - 2012-2016 (c) Sébastien Lucas
+COPS - 2012-2016 (c) Sï¿½bastien Lucas
 
 See COPYING and file headers for license info
-

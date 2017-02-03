@@ -56,6 +56,11 @@ $book->initSpineComponent();
     </script>
     <script type="text/javascript" src="<?php echo getUrlWithVersion("styles/cops-monocle.js") ?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo getUrlWithVersion("styles/cops-monocle.css") ?>" media="screen" />
+    <style>
+      #reader { max-width: 500px; margin: 0 auto;}
+      #readerBg { max-width: 500px; margin: 0 auto;}
+    </style>
+
 </head>
 <body>
   <div id="readerBg">

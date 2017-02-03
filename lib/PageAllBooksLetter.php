@@ -16,7 +16,10 @@ class PageAllBooksLetter extends Page
         $count = $this->totalNumber;
         if ($count == -1)
             $count = count ($this->entryArray);
-
-        $this->title = str_format (localize ("splitByLetter.letter"), str_format (localize ("bookword", $count), $count), $this->idGet);
+        if(empty($this->idGet) or $this->idGet == NULL) {
+          $this->title = "Book Info";
+        } else {
+          $this->title = str_format (localize ("splitByLetter.letter"), str_format (localize ("bookword", $count), $count), $this->idGet);
+        }
     }
 }

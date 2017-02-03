@@ -1,0 +1,118 @@
+<div class="container-fluid">
+  <div id="filter">
+  </div>
+{{? it.page == 13 || it.page == 16}}
+    {{? it.page == 13}}
+        {{#def.bookdetail}}
+    {{??}}
+        {{= it.fullhtml}}
+    {{?}}
+{{??}}
+<div class="row">
+  {{? it.page == "index" || it.page == 4 }}
+    {{? it.page == 4 }}
+    <h4><i class="fa fa-dashboard"></i> <a href="{{=it.homeurl}}">Home</a> >> {{=it.somenav}} {{=it.title}}</h4>
+    {{~it.indexindexes:indexindex:i}}
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+      <a href="{{=indexindex.navlink}}">
+          <div class="small-box bg-blue">
+              <div class="inner text-center">
+                <h3>{{=htmlspecialchars (indexindex.title)}}</h3>
+                <p>{{=indexindex.number}} {{? indexindex.number == 1 }} Book {{??}} Books {{?}}</p>
+              </div>
+          </div>
+        </a>
+    </div>
+    {{~}}
+
+    {{??}}
+    <h4><i class="fa fa-info"></i> Library Statistic</h4>
+    {{~it.entries:entry:i}}
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="small-box bg-blue">
+          <div class="inner text-center">
+              <h3>{{=entry.number}}</h3>
+              <p>{{=htmlspecialchars (entry.title)}}</p>
+          </div>
+      </div>
+  </div>
+    {{~}}
+    <h4><i class="fa fa-book"></i> Latest Books</h4>
+    {{~it.lastentries:lastentry:i}}
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 books">
+    <div class="col-sm-4">
+    {{? lastentry.book.hasCover == 1}}
+        <a href="{{=str_format (it.c.url.coverUrl, lastentry.book.id, it.databaseId)}}">
+            <img src="{{=str_format (it.c.url.coverUrl, lastentry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
+        </a>
+    {{?}}
+    </div>
+    <div class="col-sm-8">
+      <h3 style="margin-top: 0;"><a href="{{=str_format (it.c.url.detailUrl, lastentry.book.id, it.databaseId)}}">{{=htmlspecialchars (lastentry.title)}}</a></h3>
+      <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> <span class="sa">{{=htmlspecialchars (lastentry.book.authorsName)}}</span></div>
+      {{? lastentry.book.tagsName != ""}}<div class="ellipsis"><i class="fa fa-user"></i> <span class="se">{{=htmlspecialchars (lastentry.book.tagsName)}}</span></div>{{?}}
+      {{? lastentry.book.publisherName != ""}}<div class="ellipsis"><i class="fa fa-university"></i> <span class="ss">{{=htmlspecialchars (lastentry.book.publisherName)}}</span></div>{{?}}
+      {{? lastentry.book.languagesName != ""}}<div class="ellipsis"><i class="fa fa-globe"></i> <span class="ss">{{=htmlspecialchars (lastentry.book.languagesName)}}</span></div>{{?}}
+      {{~lastentry.book.customcolumns_list :column:column_index}}
+      <div class="ellipsis"><span class="glyphicon glyphicon-minus"></span> <span class="ss">{{=column.customColumnType.columnTitle}} : {{=column.htmlvalue}}</span></div>
+      {{~}}
+    </div>
+    </div>
+    {{~}}
+  <h4><i class="fa fa-info"></i> Index</h4>
+  {{~it.indexindexes:indexindex:i}}
+  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+    <a href="{{=indexindex.navlink}}">
+        <div class="small-box bg-blue">
+            <div class="inner text-center">
+              <h3>{{=htmlspecialchars (indexindex.title)}}</h3>
+              <p>{{=indexindex.number}} {{? indexindex.number == 1 }} Book {{??}} Books {{?}}</p>
+            </div>
+        </div>
+      </a>
+  </div>
+  {{~}}
+  {{?}}
+  {{??}}
+
+
+<h4><i class="fa fa-dashboard"></i> <a href="{{=it.homeurl}}">Home</a> >> {{=it.somenav}} {{=it.title}}</h4>
+{{~it.entries:entry:i}}
+    {{? it.containsBook == 0}}
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <a href="{{=entry.navlink}}"><div  style="width:70%;  height: auto; background-color: white; padding: 10px 0 10px 10px; float: left;">{{=htmlspecialchars (entry.title)}}</div><div class="bg-primary pull-right" style="width: 30%; padding: 10px;">{{=entry.number}} {{? entry.number == 1 }} Book {{??}} Books {{?}}</div></a>
+  </div>
+    {{??}}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 books">
+          <div class="col-sm-4">
+          {{? entry.book.hasCover == 1}}
+              <a href="{{=str_format (it.c.url.coverUrl, entry.book.id, it.databaseId)}}">
+                  <img src="{{=str_format (it.c.url.coverUrl, entry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
+              </a>
+          {{?}}
+          </div>
+          <div class="col-sm-8">
+            <h3 style="margin-top: 0;"><a href="{{=str_format (it.c.url.detailUrl, entry.book.id, it.databaseId)}}">{{=htmlspecialchars (entry.title)}}</a></h3>
+            <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> <span class="sa">{{=htmlspecialchars (entry.book.authorsName)}}</span></div>
+            {{? entry.book.tagsName != ""}}<div class="ellipsis"><i class="fa fa-user"></i> <span class="se">{{=htmlspecialchars (entry.book.tagsName)}}</span></div>{{?}}
+            {{? entry.book.publisherName != ""}}<div class="ellipsis"><i class="fa fa-university"></i> <span class="ss">{{=htmlspecialchars (entry.book.publisherName)}}</span></div>{{?}}
+            {{? entry.book.languagesName != ""}}<div class="ellipsis"><i class="fa fa-globe"></i> <span class="ss">{{=htmlspecialchars (entry.book.languagesName)}}</span></div>{{?}}
+            {{~entry.book.customcolumns_list :column:column_index}}
+            <div class="ellipsis"><span class="glyphicon glyphicon-minus"></span> <span class="ss">{{=column.customColumnType.columnTitle}} : {{=column.htmlvalue}}</span></div>
+            {{~}}
+        </div>
+    </div>
+    {{?}}
+{{~}}
+{{?}}
+{{?}}
+</div>
+{{? it.isPaginated == 1}}
+    <ul class="pager">
+        <li class="{{? it.prevLink == ""}}disabled{{?}}"><a id="prevLink" href="{{=it.prevLink}}"><span class="glyphicon glyphicon-chevron-left"></span>{{=it.c.i18n.previousAlt}}</a></li>
+        <li> {{=it.currentPage}} / {{=it.maxPage}} </li>
+        <li class="{{? it.nextLink == ""}}disabled{{?}}"><a id="nextLink" href="{{=it.nextLink}}">{{=it.c.i18n.nextAlt}}<span class="glyphicon glyphicon-chevron-right"></span></a></li>
+    </ul>
+{{?}}
+</div>
+</div>
