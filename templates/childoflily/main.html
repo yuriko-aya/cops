@@ -43,7 +43,7 @@
     <div class="col-sm-4">
     {{? lastentry.book.hasCover == 1}}
         <a href="{{=str_format (it.c.url.coverUrl, lastentry.book.id, it.databaseId)}}">
-            <img src="{{=str_format (it.c.url.coverUrl, lastentry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
+            <img src="{{=str_format (it.c.url.thumbnailUrl, lastentry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
         </a>
     {{?}}
     </div>
@@ -87,7 +87,7 @@
           <div class="col-sm-4">
           {{? entry.book.hasCover == 1}}
               <a href="{{=str_format (it.c.url.coverUrl, entry.book.id, it.databaseId)}}">
-                  <img src="{{=str_format (it.c.url.coverUrl, entry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
+                  <img src="{{=str_format (it.c.url.thumbnailUrl, entry.book.id, it.databaseId)}}" alt="{{=it.c.i18n.coverAlt}}" />
               </a>
           {{?}}
           </div>

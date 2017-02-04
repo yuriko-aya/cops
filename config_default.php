@@ -75,12 +75,12 @@
     /*
      * Height of thumbnail image for OPDS
      */
-    $config['cops_opds_thumbnail_height'] = '164';
+    $config['cops_opds_thumbnail_height'] = '209';
 
     /*
      * Height of thumbnail image for HTML
      */
-    $config['cops_html_thumbnail_height'] = '164';
+    $config['cops_html_thumbnail_height'] = '150';
 
     /*
      * Icon for both OPDS and HTML catalog
